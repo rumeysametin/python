@@ -74,3 +74,54 @@ elif ( note>= 50 ):
   print ("DD")
 else:
   print ("you failed!")
+  
+print("""
+user login
+""")
+sys_username = "michael"
+sys_password = "0101"
+right_of_enter = 3
+while True:
+  username = input ("username: ")
+  password = input ("password: ")
+  if (sys_username == username and sys_password != password):
+    print ("password is wrong!")
+    right_of_enter -= 1
+  elif (sys_username != username and sys_password == password):
+    print ("username is wrong!")
+    right_of_enter -= 1
+  elif (sys_username != username and sys_password != password):
+    print ("username and password are wrong!")
+    right_of_enter -= 1
+  else:
+    print ("logged in")
+    break
+  if (right_of_enter == 0):
+    print("you finished your right of enter! ")
+    break
+  
+number = int(input("Number:"))
+i = 1
+total = 0
+while (i < number):
+    if (number % i == 0):
+        total += i
+    i += 1
+if (total == number):
+    print(number,"is the perfect number.")
+else:
+    print(number,"isn't the perfect number.")
+    
+for x in range (1,11):
+  print("******************")
+  for y in range (1,11):
+    print("{} * {} = {}".format(x, y, x*y))
+    
+print("numbers divisible by 3: ")
+for i in range(1,50):
+  if (i % 3 != 0):
+    continue
+  print( i)
+  
+list = [i for i in range(1,101) if i%2 == 0]
+print(list)
