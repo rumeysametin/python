@@ -125,3 +125,24 @@ for i in range(1,50):
   
 list = [i for i in range(1,101) if i%2 == 0]
 print(list)
+
+def prime(number):
+  if (number == 1):
+    return False
+  elif (number == 2):
+    return True
+  else:
+    for i in range (2, number):
+      if (number % i == 0):
+        return False
+    return True
+while True:
+  number = input("enter a number: ")
+  if (number == "q"):
+    break
+  else:
+    number = int(number)
+    if (prime(number)):
+      print(number,"is a prime number")
+    else:
+      print(number,"isn't a prime number")
