@@ -157,3 +157,25 @@ def pisagor():
     return pisagor_list
 for i in pisagor():
     print(i)
+
+import random   
+print ("""
+number guessing game    
+       """)
+random_number = random.randint(0,50)
+guess_right = 7
+while True:
+  guess = int(input("your guess: "))
+  if (guess < random_number):
+    print("say higher number!")
+    guess_right -= 1
+  elif (guess > random_number):
+    print("say smaller number!")
+    guess_right -= 1
+  else:
+    print("congratulations! Correct number")
+    break
+  if (guess_right == 0):
+    print("guess right is over!")
+    print("number: ", random_number)
+    break
