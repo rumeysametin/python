@@ -179,3 +179,82 @@ while True:
     print("guess right is over!")
     print("number: ", random_number)
     break
+
+import random
+class Remote_control():
+  def __init__(self, tv_status = "off", tv_sound = 0, channel_list = ["trt"], channel = "trt"):
+    self.tv_status = tv_status
+    self.tv_sound = tv_sound
+    self.channel_list = channel_list
+    self.channel = channel
+  def tv_open(self):
+    if (self.tv_status == "on"):
+      print("tv is already on")
+    else:
+      print("tv is on")
+      self.tv_status = "on"
+  def tv_closed(self):
+    if (self.tv_status == "off"):
+      print("tv is already off")
+    else:
+      print("tv is off")
+      self.tv_status = "off"
+  def sound_settings(self):
+    while True:
+      answer = input("sound down: '<'\nsound up: '>'\nexit: '|'")
+      if (answer == "<"):
+        if (self.tv_sound != 0):
+          self.tv_sound -= 1
+          print("sound: ", self.tv_sound)
+      elif (answer == ">"):
+        if (self.tv_sound != 100):
+          self.tv_sound += 1
+          print("sound: ", self.tv_sound)
+      else:
+        print("sound updated!", self.tv_sound)
+        break
+  def add_channel(self, channel_name):
+    self.channel_list.append(channel_name)
+    print("added channel!")
+  def random_channel(self):
+    rando = random.randint(0, len(self.channel_list)-1)
+    self.channel = self.channel_list[rando]
+    print("current channel: ", self.channel)
+  def __len__(self):
+    return len(self.channel_list)
+  def __str__(self):
+    return "tv status: {}\n sound: {}\n channel list: {}\n current channel: {}\n ".format(self.tv_status, self.tv_sound, self.channel_list, self.channel)
+control = Remote_control()
+print("""
+      1.Turn on tv
+      2.Turn off tv
+      3.Sound settings
+      4.Add channel
+      5.Number of channels
+      6.Random channel
+      7.Tv informations
+      Enter 'q' for exit
+      """) 
+while True:
+  action = input("select the action: ")
+  if (action == "q"):
+    break
+  elif (action == "1"):
+    control.tv_open()
+  elif (action == "2"):
+    control.tv_closed()
+  elif (action == "3"):
+    control.sound_settings()
+  elif (action == "4"):
+    channel_names = input("enter the channel names: ")
+    channel_list = channel_names.split(",")
+    for added in channel_list:
+      control.add_channel(added)
+  elif (action == "5"):
+    print("number of channels: ", len(control))
+  elif (action == "6"):
+    control.random_channel()
+  elif (action == "7"):
+    print(control)
+  else:
+    print("invalid action!")
