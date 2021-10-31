@@ -258,3 +258,33 @@ while True:
     print(control)
   else:
     print("invalid action!")
+  
+def fibonacci():
+    a = 1
+    b = 1
+    yield a
+    yield b  
+    while True:
+        a,b = b, a+b
+        yield b 
+for number in fibonacci():
+    if (number> 100000):
+        break
+    print(number)
+    
+import requests
+from bs4 import BeautifulSoup
+url = "https://www.imdb.com/chart/top/"
+response = requests.get(url)
+html_icerik = response.content
+soup = BeautifulSoup(html_icerik, "html.parser")
+a = float(input("enter rating: "))
+titles = soup.find_all("td", {"class": "titleColumn"})
+ratings = soup.find_all("td", {"class": "ratingColumn imdbRating"})
+for title, rating in zip(titles, ratings):
+  title = title.text
+  rating = rating.text
+  title = title.strip()
+  title = title.replace("/n", "")
+  if (float(rating) > a):
+    print("Movie Name: {} Movie Rating: {}".format(title,rating))
