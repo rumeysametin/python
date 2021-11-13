@@ -5,12 +5,9 @@
 <h3>Pursuit of Happiness...</h3>
 <p>I write articles on various topics such as healthy living, pen pals and yoga on this blog, which I set out with the aim of motivating my readers for a happier and more peaceful life.</p>
 </div>
-
-{% if answer == "1" %}
-<p>answer 1</p>
-{% elif answer == "2" %}
-<p>answer 2</p>
-{% else %}
-<p>invalid answer</p>
-{% endif %}
+<ul>
+{% for number in numbers %}
+      <li>{{number}}</li>
+{% endfor %}
+</ul>
 {% endblock body %}
